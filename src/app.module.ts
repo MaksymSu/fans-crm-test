@@ -19,7 +19,7 @@ import { UserModule } from './user/user.module';
       models: [User],
       autoLoadModels: true,
       synchronize: true,
-      logging: true,
+      logging: true
     }),
     UserModule
   ]

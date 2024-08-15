@@ -7,15 +7,15 @@ export class User extends Model<User>{
     @Column({ type: DataType.INTEGER, primaryKey: true, unique: true, autoIncrement: true })
     id: number;
 
-    @ApiProperty({ example: 'Connor256', description: 'Screen name' })
+    @ApiProperty({ example: 'Connor256', description: 'Name' })
     @Column({ type: DataType.STRING, allowNull: true })
-    screenName: string;
+    name: string;
 
     @ApiProperty({ example: '123@gmail.com', description: 'Email' })
-    @Column({ type: DataType.STRING, allowNull: false })
+    @Column({ type: DataType.STRING, allowNull: false, unique: true })
     email: string;
 
-    @ApiProperty({ example: '123456As$', description: 'Password' })
+    @ApiProperty({ example: '123456As$', description: 'Password hash' })
     @Column({ type: DataType.STRING, allowNull: false })
     password: string;
 }
