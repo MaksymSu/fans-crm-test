@@ -7,7 +7,7 @@ async function bootstrap() {
   const port = process.env.PORT || 4000;
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-    .setTitle('Mapooze API')
+    .setTitle('API')
     .setDescription('REST for Fans-crm test')
     .setVersion('1.0.0')
     .addTag('REST')
