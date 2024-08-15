@@ -17,9 +17,6 @@ export class UserService {
     const candidate = await this.userRepository.findOne({
       where: {
         email: createUserDto.email
-      },
-      include: {
-        all: true
       }
     });
     if (candidate) {
@@ -38,7 +35,7 @@ export class UserService {
     }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: number) {
+    return await this.userRepository.findOne({ where: { id }, attributes: ['id', 'name', 'email'] });
   }
 }
