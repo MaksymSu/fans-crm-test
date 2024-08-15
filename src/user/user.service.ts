@@ -14,7 +14,6 @@ export class UserService {
   ) { }
 
   async create(createUserDto: CreateUserDto) {
-
     const candidate = await this.userRepository.findOne({
       where: {
         email: createUserDto.email
@@ -26,9 +25,7 @@ export class UserService {
     if (candidate) {
       throw new HttpException('This email is already taken', HttpStatus.BAD_REQUEST);
     }
-
     const passwordHash = await bcrypt.hash(createUserDto.password, 5);
-
     const user = await this.userRepository.create({ ...createUserDto, password: passwordHash });
 
     return await this.generateToken(user);
@@ -41,19 +38,7 @@ export class UserService {
     }
   }
 
-  findAll() {
-    return `This action returns all user`;
-  }
-
   findOne(id: number) {
     return `This action returns a #${id} user`;
-  }
-
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
   }
 }
